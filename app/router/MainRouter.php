@@ -22,7 +22,7 @@ class MainRouter extends Group
         $this->add(
             '/',
             [
-                'action' => 'helloworld'
+                'controller' =>'kategori',
             ]
         );
 
