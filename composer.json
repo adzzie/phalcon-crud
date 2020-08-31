@@ -34,13 +34,14 @@
     "ramsey/uuid": "3.*",
     "alphayax/get_opt": "3.0.0",
     "verdant/xml2array": "dev-master",
-    "sentry/sentry": "dev-master",
     "voku/anti-xss": "dev-master",
     "ezyang/htmlpurifier": "dev-master",
     "peppeocchi/php-cron-scheduler": "^2.3",
     "filp/whoops": "^2.1",
     "league/flysystem-aws-s3-v3": "dev-master",
-    "psy/psysh": "dev-master"
+    "psy/psysh": "dev-master",
+    "php-http/curl-client": "^2.0@dev",
+    "raven/raven": "^0.16.0@dev"
   },
   "require-dev": {
     "fzaninotto/faker": "dev-master",

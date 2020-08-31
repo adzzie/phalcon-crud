@@ -16,7 +16,7 @@ class MainRouter extends Group
     {
         $this->setPaths([
             'namespaces' => 'Application\\Controllers',
-            'controller'=>'index'
+//            'controller'=>'index'
         ]);
 
         $this->add(
@@ -25,5 +25,24 @@ class MainRouter extends Group
                 'action' => 'helloworld'
             ]
         );
+
+
+        // Define a route
+        $this->add(
+            '/:controller',
+            [
+                'controller' => 1,
+                'action'     => 'index'
+            ]
+        );
+        $this->add(
+            '/:controller/:action/:params',
+            [
+                'controller' => 1,
+                'action'     => 2,
+                'params'     => 3,
+            ]
+        );
+
     }
 }

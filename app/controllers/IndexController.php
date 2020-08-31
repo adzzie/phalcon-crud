@@ -12,8 +12,8 @@ class IndexController extends ControllerBase {
     }
 
     public function helloWorldAction() {
-		$this->view->disable();
-		echo "Hello World";
+//		$this->view->disable();
+//		echo "Hello World";
 	}
 }
 

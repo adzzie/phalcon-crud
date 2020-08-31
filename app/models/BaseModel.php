@@ -10,6 +10,7 @@ class BaseModel extends Model {
 	public $timestamp = false;
 	public $userstamp = false;
 	public $softdelete = false;
+	public $is_uuid = true;
 	//
 	public $is_deleted;
 	public $created_at;
@@ -25,9 +26,13 @@ class BaseModel extends Model {
 	}
 
 	public function beforeValidationOnCreate() {
+	    if ($this->is_uuid){
+            $random = new \Phalcon\Security\Random();
+            $this->id = $random->uuid();
+        }
 		if ( $this->timestamp ) {
-			$this->created_at  = time();
-			$this->modified_at = time();
+			$this->created_at  = date("YYYY-mm-dd H:i:s",time());
+			$this->modified_at = date("YYYY-mm-dd H:i:s",time());
 		}
 		if ( $this->softdelete ) {
 			if ( ! isset( $this->is_deleted ) ) {
@@ -41,9 +46,9 @@ class BaseModel extends Model {
 
 	public function beforeValidationOnUpdate() {
 		if ( $this->timestamp && empty( $this->is_deleted ) ) {
-			$this->modified_at = time();
+			$this->modified_at = date("YYYY-mm-dd H:i:s",time());
 		} else {
-			$this->deleted_at = time();
+			$this->deleted_at = null;
 		}
 	}
 

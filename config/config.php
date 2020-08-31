@@ -1,10 +1,22 @@
 <?php
 
+define( 'BASE_DIR', dirname( __DIR__ ) . DIRECTORY_SEPARATOR );
 defined( 'APP_PATH' ) || define( 'APP_PATH', realpath( '.' ) );
 
 use  Phalcon\Logger;
 
+require __DIR__ . '/../bootstrap/helpers.php';
+
 return new \Phalcon\Config( [
+    'database' => [
+        'adapter'  => 'Mysql',
+        'host'     => env( 'DATABASE_HOST', '127.0.0.1' ),
+        'dbname'   => env( 'DATABASE_NAME', 'application' ),
+        'port'     => env( 'DATABASE_PORT', 3306 ),
+        'username' => env( 'DATABASE_USER', 'application' ),
+        'password' => env( 'DATABASE_PASS', 'secret' ),
+        'charset'  => env( 'DATABASE_CHARSET', 'utf8mb4' ),
+    ],
 	'site'          => [
 		'name'        => 'Application',
 		'url'         => 'https://app.vm',
