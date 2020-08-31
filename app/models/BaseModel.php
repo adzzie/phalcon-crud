@@ -30,27 +30,26 @@ class BaseModel extends Model {
             $random = new \Phalcon\Security\Random();
             $this->id = $random->uuid();
         }
-		if ( $this->timestamp ) {
-			$this->created_at  = date("YYYY-mm-dd H:i:s",time());
-			$this->modified_at = date("YYYY-mm-dd H:i:s",time());
-		}
-		if ( $this->softdelete ) {
-			if ( ! isset( $this->is_deleted ) ) {
-				$this->is_deleted = 0;
-			}
-			if ( ! isset( $this->deleted_at ) ) {
-				$this->deleted_at = 0;
-			}
-		}
+
 	}
 
-	public function beforeValidationOnUpdate() {
-		if ( $this->timestamp && empty( $this->is_deleted ) ) {
-			$this->modified_at = date("YYYY-mm-dd H:i:s",time());
-		} else {
-			$this->deleted_at = null;
-		}
-	}
+	public function beforeCreate(){
+        $time = date("Y-m-d H:i:s",time());
+        $this->created_at  = $time;
+        $this->modified_at = $time;
+    }
+
+//	public function beforeValidationOnUpdate() {
+//		if ( $this->timestamp && empty( $this->is_deleted ) ) {
+//			$this->modified_at = date("Y-m-d H:i:s",time());
+//		} else {
+//			$this->deleted_at = date("Y-m-d H:i:s",time());
+//		}
+//	}
+
+	public function beforeUpdate(){
+	    $this->modified_at = date("Y-m-d H:i:s",time());
+    }
 
 	public function softdelete() {
 		$this->is_deleted = 1;

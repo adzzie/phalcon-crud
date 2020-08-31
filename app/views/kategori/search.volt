@@ -21,8 +21,8 @@
             <th>Nama</th>
             <th>Created</th>
             <th>Modified</th>
-            <th>Is Of Deleted</th>
-            <th>Deleted</th>
+{#            <th>Is Of Deleted</th>#}
+{#            <th>Deleted</th>#}
 
                 <th></th>
                 <th></th>
@@ -36,8 +36,8 @@
             <td>{{ kategori.nama }}</td>
             <td>{{ kategori.created_at }}</td>
             <td>{{ kategori.modified_at }}</td>
-            <td>{{ kategori.is_deleted }}</td>
-            <td>{{ kategori.deleted_at }}</td>
+{#            <td>{{ kategori.is_deleted }}</td>#}
+{#            <td>{{ kategori.deleted_at }}</td>#}
 
                 <td>{{ link_to("kategori/edit/"~kategori.id, "Edit") }}</td>
                 <td>{{ link_to("kategori/delete/"~kategori.id, "Delete") }}</td>
